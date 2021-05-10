@@ -1,0 +1,17 @@
+JavaScript cares about Lexical Enviroment that means that your
+code has similatiry to computer instructions in the way that
+your code was written. In other words the computer will organize the code
+in memory likely as the written code.
+
+
+code example:
+
+function hello(){
+    var a = 'hello word';
+}
+
+Computer instructions structure:
+    function x
+         variable y
+
+

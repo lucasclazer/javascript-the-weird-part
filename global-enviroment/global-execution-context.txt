@@ -1,0 +1,12 @@
+Whenever the JavaScript code it's wraps inside the 
+Excution Context. The base excution context is the Global.
+It's create a 'Global Object' and 'this' that references the 
+'Global Object'.
+
+for some example you can run:
+this when you open global-enviroment project for exemplification
+
+
+
+
+
