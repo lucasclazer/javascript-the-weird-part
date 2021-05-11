@@ -65,10 +65,12 @@ The Excution Stack Concept:
 
 The Scope Chain:
  Remembering the concepts of the Creation Phase JavaScript has an Outer Enviroment. This Outer
- Enviroment carries a reference from where the actual context is beeing called. So is because 
- of that we didn't got an undeclared variable error when we call the function b();
+ Enviroment carries a reference from where the actual context is beeing called. When the actual
+ context try to get the a variable or a funtion and did not find it. The Actual context try to find 
+ it on Outer Enviroment. So is because of that we didn't got an undeclared variable error when we 
+ call the function b();
 
-    example:
+    example 1:
         function b(){
             console.log(myVar)
         }
@@ -82,15 +84,59 @@ The Scope Chain:
         var myVar = 1;
         a();
 
-        Outputs: will be 1
-
         stack: [
             ExcutionContext1: { outerEnvironment: reference's to GlobalExcutionContext }
             ExcutionContext2: { myVar: 2, outerEnvironment: reference's to GlobalExcutionContext }
             GlobalExcutionContext: { myVar: 1}
         ] 
 
+    Outputs: will be 1
 
+    example 2:
+
+        function a(){
+            function b(){
+                console.log(myVar)
+            }
+            var myVar = 2; 
+            b()
+        }
+
+    
+        var myVar = 1;
+        a();
+ 
+        stack: [
+            ExcutionContext1: { outerEnvironment: reference's to ExcutionContext2 }
+            ExcutionContext2: { myVar: 2, outerEnvironment: reference's to GlobalExcutionContext }
+            GlobalExcutionContext: { myVar: 1}
+        ] 
+
+    Outputs: will be 2;
+
+
+JavaScript Asynchronous callback: Event Queue
+ JavaScript Engine look into Event Queue for execute the events and some thing is there.
+ Javascript Engine creates the context of the event and then execute it. The event queue is 
+ asynchronous but the Javascript stack is synchonous. So JavaScript only execute another event
+ when the excution stack is empty. 
+ 
+    code example 1:
+        function waitThreeSeconds(){
+            var ms 3000 + new Date().getTime();
+            while(new Date() < ms){
+                console.log('Finished function');
+            }
+        }
+
+        function clickHandler(){
+            console.log('click event');
+        }
+
+        document.addEventListener('click', clickHandler);
+
+        waitThreeSeconds();
+        console.log('finished global context execution.')
 
 
 

@@ -1,0 +1,10 @@
+There are six primitive types on JavaScript;
+
+{
+    undefined, //Used by Javascript Engine on creation context.
+    NULL, //can be used by developer to set an empty variable.
+    boolean,
+    number,// float point number
+    string,
+    symbol, //introduced on ES6
+}
