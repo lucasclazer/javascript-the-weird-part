@@ -4,7 +4,72 @@ It's create a 'Global Object' and 'this' that references the
 'Global Object'.
 
 for some example you can run:
-this when you open global-enviroment project for exemplification
+
+when you open your browser and type 'this' you can see the 
+global-enviroment of the this project or you can use windows.
+Theese are the JavaScript Global Excution Context created when
+your code is transpiled to the browser.
+
+
+The Creating Phase:
+- Global Object
+- 'this' (reference to Global Object)
+- Outer Environment
+- Setup Memory Space for Variables and Functions "Hoisting"
+
+When JavaScript Engine will be setup (Hoisting) in the 
+Creating Phase the Environment will setup all memory for 
+Variables and Functions.
+
+So Variables and Functions are all set equal to 'undefined', Its 
+important to leave for the Javascript Engine to initialize the variables
+with 'undefined' because if you do that. You I'll never know who was initialized
+that variable. Initializing variables with 'undefined' are not good practise.  
+
+The Execution phase:
+ In execution phase the Javascript engine it will run it, interpreting it and
+ compiling it, your code line by line. 
+
+    Example code of Creating and execution code
+
+        function b(){
+            console.log("Called b");
+        }
+
+        b(); //this will be executed on Execution Phase only;
+
+        console.log(a); //will return undefined because the
+
+        var a = "Hello world";
+
+        console.log(a); //this will be executed on Creation Phase;
+
+
+
+
+
+The Excution Stack:
+    function a()
+    {
+        b(); //creates another execution context and execute
+    }
+
+    function b(){
+        var d; //creates another execution context and execute
+    }
+
+    a();// creates execution context and pushes to top of excution stack.
+    var d;
+
+    stack excution: 
+       1: [ b, a, GlobalExecution]
+       2: [ a, GlobalExecution]
+       3: [GlobalExecution]
+
+
+
+
+
 
 
 
