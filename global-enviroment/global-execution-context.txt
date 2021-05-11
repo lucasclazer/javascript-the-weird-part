@@ -6,7 +6,7 @@ It's create a 'Global Object' and 'this' that references the
 for some example you can run:
 
 when you open your browser and type 'this' you can see the 
-global-enviroment of the this project or you can use windows.
+global-Environment of the this project or you can use windows.
 Theese are the JavaScript Global Excution Context created when
 your code is transpiled to the browser.
 
@@ -45,10 +45,7 @@ The Execution phase:
         console.log(a); //this will be executed on Creation Phase;
 
 
-
-
-
-The Excution Stack:
+The Excution Stack Concept:
     function a()
     {
         b(); //creates another execution context and execute
@@ -66,6 +63,32 @@ The Excution Stack:
        2: [ a, GlobalExecution]
        3: [GlobalExecution]
 
+The Scope Chain:
+ Remembering the concepts of the Creation Phase JavaScript has an Outer Enviroment. This Outer
+ Enviroment carries a reference from where the actual context is beeing called. So is because 
+ of that we didn't got an undeclared variable error when we call the function b();
+
+    example:
+        function b(){
+            console.log(myVar)
+        }
+
+        function a(){
+            var myVar = 2; 
+            b()
+        }
+
+    
+        var myVar = 1;
+        a();
+
+        Outputs: will be 1
+
+        stack: [
+            ExcutionContext1: { outerEnvironment: reference's to GlobalExcutionContext }
+            ExcutionContext2: { myVar: 2, outerEnvironment: reference's to GlobalExcutionContext }
+            GlobalExcutionContext: { myVar: 1}
+        ] 
 
 
 
